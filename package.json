@@ -1,5 +1,5 @@
 {
-  "name": "hardhat-ts-plugin-boilerplate",
+  "name": "hardhat-storage-layout",
   "version": "0.0.1",
   "description": "Hardhat TypeScript plugin boilerplate",
   "repository": "github:nomiclabs/hardhat-ts-plugin-boilerplate",

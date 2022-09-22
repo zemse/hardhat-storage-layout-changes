@@ -1,0 +1,195 @@
+{
+  "storage": [
+    {
+      "astId": 4,
+      "contract": "contracts/Hello.sol:Hello",
+      "label": "x",
+      "offset": 0,
+      "slot": "0",
+      "type": "t_uint256",
+      "compared": true
+    },
+    {
+      "astId": 6,
+      "contract": "contracts/Hello.sol:Hello",
+      "label": "y",
+      "offset": 0,
+      "slot": "1",
+      "type": "t_address",
+      "compared": true
+    },
+    {
+      "astId": 8,
+      "contract": "contracts/Hello.sol:Hello",
+      "label": "w",
+      "offset": 0,
+      "slot": "2",
+      "type": "t_uint256",
+      "compared": true
+    },
+    {
+      "astId": 10,
+      "contract": "contracts/Hello.sol:Hello",
+      "label": "q",
+      "offset": 0,
+      "slot": "3",
+      "type": "t_uint256",
+      "compared": true
+    },
+    {
+      "astId": 12,
+      "contract": "contracts/Hello.sol:Hello",
+      "label": "a",
+      "offset": 0,
+      "slot": "4",
+      "type": "t_uint64",
+      "compared": true
+    },
+    {
+      "astId": 14,
+      "contract": "contracts/Hello.sol:Hello",
+      "label": "b",
+      "offset": 8,
+      "slot": "4",
+      "type": "t_uint64",
+      "compared": true
+    },
+    {
+      "astId": 16,
+      "contract": "contracts/Hello.sol:Hello",
+      "label": "c",
+      "offset": 16,
+      "slot": "4",
+      "type": "t_uint64",
+      "compared": true
+    },
+    {
+      "astId": 18,
+      "contract": "contracts/Hello.sol:Hello",
+      "label": "d",
+      "offset": 24,
+      "slot": "4",
+      "type": "t_uint64",
+      "compared": true
+    },
+    {
+      "astId": 36,
+      "contract": "contracts/Hello.sol:Hello",
+      "label": "worlds",
+      "offset": 0,
+      "slot": "5",
+      "type": "t_array(t_struct(World)25_storage)dyn_storage",
+      "compared": true
+    },
+    {
+      "astId": 41,
+      "contract": "contracts/Hello.sol:Hello",
+      "label": "worldMap",
+      "offset": 0,
+      "slot": "6",
+      "type": "t_mapping(t_uint256,t_struct(World)25_storage)",
+      "compared": true
+    },
+    {
+      "astId": 44,
+      "contract": "contracts/Hello.sol:Hello",
+      "label": "world",
+      "offset": 0,
+      "slot": "7",
+      "type": "t_struct(World)25_storage",
+      "compared": true
+    },
+    {
+      "astId": 46,
+      "contract": "contracts/Hello.sol:Hello",
+      "label": "data",
+      "offset": 0,
+      "slot": "10",
+      "type": "t_bytes_storage",
+      "compared": true
+    },
+    {
+      "astId": 48,
+      "contract": "contracts/Hello.sol:Hello",
+      "label": "name",
+      "offset": 0,
+      "slot": "11",
+      "type": "t_string_storage",
+      "compared": true
+    }
+  ],
+  "types": {
+    "t_address": {
+      "encoding": "inplace",
+      "label": "address",
+      "numberOfBytes": "20"
+    },
+    "t_array(t_struct(World)25_storage)dyn_storage": {
+      "base": "t_struct(World)25_storage",
+      "encoding": "dynamic_array",
+      "label": "struct Hello.World[]",
+      "numberOfBytes": "32"
+    },
+    "t_bytes_storage": {
+      "encoding": "bytes",
+      "label": "bytes",
+      "numberOfBytes": "32"
+    },
+    "t_mapping(t_uint256,t_struct(World)25_storage)": {
+      "encoding": "mapping",
+      "key": "t_uint256",
+      "label": "mapping(uint256 => struct Hello.World)",
+      "numberOfBytes": "32",
+      "value": "t_struct(World)25_storage"
+    },
+    "t_string_storage": {
+      "encoding": "bytes",
+      "label": "string",
+      "numberOfBytes": "32"
+    },
+    "t_struct(World)25_storage": {
+      "encoding": "inplace",
+      "label": "struct Hello.World",
+      "members": [
+        {
+          "astId": 20,
+          "contract": "contracts/Hello.sol:Hello",
+          "label": "a",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_uint256",
+          "compared": true
+        },
+        {
+          "astId": 22,
+          "contract": "contracts/Hello.sol:Hello",
+          "label": "c",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_uint256",
+          "compared": true
+        },
+        {
+          "astId": 24,
+          "contract": "contracts/Hello.sol:Hello",
+          "label": "d",
+          "offset": 0,
+          "slot": "2",
+          "type": "t_uint256",
+          "compared": true
+        }
+      ],
+      "numberOfBytes": "96"
+    },
+    "t_uint256": {
+      "encoding": "inplace",
+      "label": "uint256",
+      "numberOfBytes": "32"
+    },
+    "t_uint64": {
+      "encoding": "inplace",
+      "label": "uint64",
+      "numberOfBytes": "8"
+    }
+  }
+}

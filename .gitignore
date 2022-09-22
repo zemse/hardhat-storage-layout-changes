@@ -61,3 +61,10 @@ typings/
 
 # environment variables
 .env
+
+# hardhat
+artifacts
+cache
+
+# temporarily added
+src/_utils.ts

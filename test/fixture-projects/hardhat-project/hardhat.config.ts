@@ -4,10 +4,19 @@ import { HardhatUserConfig } from "hardhat/types";
 import "../../../src/index";
 
 const config: HardhatUserConfig = {
-  solidity: "0.7.3",
+  solidity: {
+    version: "0.8.14",
+    settings: {
+      outputSelection: {
+        "*": {
+          "*": ["storageLayout"],
+        },
+      },
+    },
+  },
   defaultNetwork: "hardhat",
-  paths: {
-    newPath: "asd",
+  storageLayoutCheck: {
+    contracts: ["Hello"],
   },
 };
 
