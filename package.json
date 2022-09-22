@@ -1,8 +1,8 @@
 {
-  "name": "hardhat-storage-layout",
+  "name": "hardhat-storage-layout-changes",
   "version": "0.1.0",
   "description": "Hardhat plugin to check for storage layout changes",
-  "repository": "github:zemse/hardhat-storage-layout",
+  "repository": "github:zemse/hardhat-storage-layout-changes",
   "author": "zemse",
   "license": "MIT",
   "main": "dist/src/index.js",
@@ -18,7 +18,7 @@
     "lint:fix": "prettier --write 'src/**/*.{js,ts}' 'test/**/*.{js,ts}' && tslint --fix --config tslint.json --project tsconfig.json",
     "lint": "tslint --config tslint.json --project tsconfig.json",
     "test": "mocha --exit --recursive 'test/**/*.test.ts'",
-    "build": "tsc",
+    "build": "rm -rf dist && tsc",
     "watch": "tsc -w",
     "prepublishOnly": "npm run build"
   },

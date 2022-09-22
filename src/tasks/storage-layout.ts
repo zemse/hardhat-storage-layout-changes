@@ -39,7 +39,7 @@ task("storage-layout")
       console.log("Contract:", contract.contractName);
 
       const fileName = `${
-        hre.config.storageLayoutConfig.fullPath
+        hre.config.storageLayoutChanges.fullPath
           ? contract.fullyQualifiedName
           : contract.contractName
       }.json`;

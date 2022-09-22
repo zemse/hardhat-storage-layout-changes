@@ -1,4 +1,4 @@
-# hardhat-storage-layout
+# hardhat-storage-layout-changes
 
 _Hardhat plugin to check for storage layout changes_
 
@@ -9,19 +9,19 @@ When working with complex and upgradable contracts, it can be difficult to manua
 ## Installation
 
 ```bash
-npm install hardhat-storage-layout
+npm install hardhat-storage-layout-changes
 ```
 
 Import the plugin in your `hardhat.config.js`:
 
 ```js
-require("hardhat-storage-layout");
+require("hardhat-storage-layout-changes");
 ```
 
 Or if you are using TypeScript, in your `hardhat.config.ts`:
 
 ```ts
-import "hardhat-storage-layout";
+import "hardhat-storage-layout-changes";
 ```
 
 ## Tasks

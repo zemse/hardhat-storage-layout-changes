@@ -5,7 +5,7 @@ declare module "hardhat/types/config" {
   // This is an example of an extension to one of the Hardhat config values.
 
   export interface HardhatUserConfig {
-    storageLayoutConfig?: {
+    storageLayoutChanges?: {
       contracts?: string[];
       fullPath?: boolean;
     };
@@ -16,7 +16,7 @@ declare module "hardhat/types/config" {
   }
 
   export interface HardhatConfig {
-    storageLayoutConfig: {
+    storageLayoutChanges: {
       contracts: string[];
       fullPath: boolean;
     };
@@ -30,10 +30,10 @@ declare module "hardhat/types/config" {
 extendConfig(
   (config: HardhatConfig, userConfig: Readonly<HardhatUserConfig>) => {
     const storageLayoutConfig = {
-      contracts: userConfig?.storageLayoutConfig?.contracts ?? [],
-      fullPath: userConfig?.storageLayoutConfig?.fullPath ?? true,
+      contracts: userConfig?.storageLayoutChanges?.contracts ?? [],
+      fullPath: userConfig?.storageLayoutChanges?.fullPath ?? true,
     };
-    config.storageLayoutConfig = storageLayoutConfig;
+    config.storageLayoutChanges = storageLayoutConfig;
 
     const storageLayouts =
       userConfig.paths?.storageLayouts ?? "storage-layouts";

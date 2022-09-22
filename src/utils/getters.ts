@@ -12,7 +12,7 @@ export async function getStorageLayoutCheckContracts(
   }>
 > {
   const fullNames = await hre.artifacts.getAllFullyQualifiedNames();
-  const contracts = hre.config.storageLayoutConfig.contracts;
+  const contracts = hre.config.storageLayoutChanges.contracts;
   return (contracts.length
     ? contracts.map((userContractStr) => {
         const fullNamesFiltered = fullNames.filter((fullName) => {
