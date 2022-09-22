@@ -39,6 +39,7 @@ export function compareStorageEntries(
         ]);
         returnCode = 1;
       }
+      (actual as any).compared = true;
     } else {
       // actualEntriesFilter.length === 1
       const actual = actualEntriesFilter[0];
