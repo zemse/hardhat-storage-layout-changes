@@ -12,26 +12,30 @@ export async function getStorageLayoutCheckContracts(
   }>
 > {
   const fullNames = await hre.artifacts.getAllFullyQualifiedNames();
-  return hre.config.storageLayoutConfig.contracts.map((userContractStr) => {
-    const fullNamesFiltered = fullNames.filter((fullName) => {
-      if (fullName === userContractStr) {
-        return true;
-      } else {
-        const [, contractName] = fullName.split(":");
-        return contractName === userContractStr;
-      }
-    });
-    if (fullNamesFiltered.length > 1) {
-      throw new Error(
-        `Contract ${userContractStr} is ambiguous. Please use fully qualified name.`
-      );
-    } else if (fullNamesFiltered.length === 0) {
-      throw new Error(
-        `Contract ${userContractStr} not found. Please make sure it is compiled or use fully qualified name.`
-      );
-    }
-
-    const fullyQualifiedName = fullNamesFiltered[0];
+  const contracts = hre.config.storageLayoutConfig.contracts;
+  return (contracts.length
+    ? contracts.map((userContractStr) => {
+        const fullNamesFiltered = fullNames.filter((fullName) => {
+          if (fullName === userContractStr) {
+            return true;
+          } else {
+            const [, contractName] = fullName.split(":");
+            return contractName === userContractStr;
+          }
+        });
+        if (fullNamesFiltered.length > 1) {
+          throw new Error(
+            `Contract ${userContractStr} is ambiguous. Please use fully qualified name.`
+          );
+        } else if (fullNamesFiltered.length === 0) {
+          throw new Error(
+            `Contract ${userContractStr} not found. Please make sure it is compiled or use fully qualified name.`
+          );
+        }
+        return fullNamesFiltered[0];
+      })
+    : fullNames.filter((fullName) => fullName.startsWith("contracts"))
+  ).map((fullyQualifiedName) => {
     const [sourceName, contractName] = fullyQualifiedName.split(":");
     return { sourceName, contractName, fullyQualifiedName };
   });
