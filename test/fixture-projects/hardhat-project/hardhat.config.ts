@@ -14,9 +14,13 @@ const config: HardhatUserConfig = {
       },
     },
   },
+  paths: {
+    // storageLayouts: ".storage-layouts",
+  },
   defaultNetwork: "hardhat",
-  storageLayoutCheck: {
+  storageLayoutConfig: {
     contracts: ["Hello"],
+    fullPath: false,
   },
 };
 

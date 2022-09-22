@@ -1,5 +1,7 @@
 import fs from "fs-extra";
+import path from "path";
 import { task } from "hardhat/config";
+import { HardhatConfig } from "hardhat/types";
 import { Results, StorageLayout } from "../types";
 
 import {
@@ -25,11 +27,18 @@ task("storage-layout", "Updates storage layout")
 
     let shouldThrowError;
 
+    const basePath = normalizePath(hre.config, hre.config.paths.storageLayouts);
+
     for (const contract of contracts) {
       console.log("Contract:", contract.contractName);
 
-      const subPath = `storage-layout/${contract.fullyQualifiedName}.json`;
-      const path = `${hre.config.paths.root}/${subPath}`;
+      const fileName = `${
+        hre.config.storageLayoutConfig.fullPath
+          ? contract.fullyQualifiedName
+          : contract.contractName
+      }.json`;
+      const fullPath = path.join(basePath, fileName);
+
       const contractStorageLayout = await getStorageLayout(
         hre,
         contract.sourceName,
@@ -38,9 +47,9 @@ task("storage-layout", "Updates storage layout")
 
       let results: Results = [];
 
-      const pathExists = await fs.pathExists(path);
+      const pathExists = await fs.pathExists(fullPath);
       if (pathExists) {
-        const storedStorageLayout: StorageLayout = await fs.readJSON(path);
+        const storedStorageLayout: StorageLayout = await fs.readJSON(fullPath);
         compareStorageEntries(
           storedStorageLayout.storage,
           contractStorageLayout.storage,
@@ -68,11 +77,11 @@ task("storage-layout", "Updates storage layout")
       } else {
         if (!pathExists || warningResults.length > 0) {
           // update storage layout file
-          console.log(`updating ${subPath}`);
-          await fs.ensureFile(path);
-          await fs.writeJSON(path, contractStorageLayout, { spaces: 2 });
+          console.log(`updating ${fileName}`);
+          await fs.ensureFile(fullPath);
+          await fs.writeJSON(fullPath, contractStorageLayout, { spaces: 2 });
         } else {
-          console.log(`no need to update ${subPath}`);
+          console.log(`no need to update ${fileName}`);
         }
       }
     }
@@ -85,3 +94,11 @@ task("storage-layout", "Updates storage layout")
 
     return;
   });
+
+// https://github.com/wighawag/hardhat-deploy/blob/819df0fad56d75a5de5218c3307bec2093f8794c/src/index.ts#L63
+function normalizePath(config: HardhatConfig, userPath: string): string {
+  if (!path.isAbsolute(userPath)) {
+    userPath = path.normalize(path.join(config.paths.root, userPath));
+  }
+  return userPath;
+}

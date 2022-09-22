@@ -6,8 +6,7 @@
       "label": "x",
       "offset": 0,
       "slot": "0",
-      "type": "t_uint256",
-      "compared": true
+      "type": "t_uint256"
     },
     {
       "astId": 6,
@@ -15,8 +14,7 @@
       "label": "y",
       "offset": 0,
       "slot": "1",
-      "type": "t_address",
-      "compared": true
+      "type": "t_address"
     },
     {
       "astId": 8,
@@ -24,8 +22,7 @@
       "label": "w",
       "offset": 0,
       "slot": "2",
-      "type": "t_uint256",
-      "compared": true
+      "type": "t_uint256"
     },
     {
       "astId": 10,
@@ -33,8 +30,7 @@
       "label": "q",
       "offset": 0,
       "slot": "3",
-      "type": "t_uint256",
-      "compared": true
+      "type": "t_uint256"
     },
     {
       "astId": 12,
@@ -42,8 +38,7 @@
       "label": "a",
       "offset": 0,
       "slot": "4",
-      "type": "t_uint64",
-      "compared": true
+      "type": "t_uint64"
     },
     {
       "astId": 14,
@@ -51,8 +46,7 @@
       "label": "b",
       "offset": 8,
       "slot": "4",
-      "type": "t_uint64",
-      "compared": true
+      "type": "t_uint64"
     },
     {
       "astId": 16,
@@ -60,8 +54,7 @@
       "label": "c",
       "offset": 16,
       "slot": "4",
-      "type": "t_uint64",
-      "compared": true
+      "type": "t_uint64"
     },
     {
       "astId": 18,
@@ -69,8 +62,7 @@
       "label": "d",
       "offset": 24,
       "slot": "4",
-      "type": "t_uint64",
-      "compared": true
+      "type": "t_uint64"
     },
     {
       "astId": 36,
@@ -78,8 +70,7 @@
       "label": "worlds",
       "offset": 0,
       "slot": "5",
-      "type": "t_array(t_struct(World)25_storage)dyn_storage",
-      "compared": true
+      "type": "t_array(t_struct(World)25_storage)dyn_storage"
     },
     {
       "astId": 41,
@@ -87,8 +78,7 @@
       "label": "worldMap",
       "offset": 0,
       "slot": "6",
-      "type": "t_mapping(t_uint256,t_struct(World)25_storage)",
-      "compared": true
+      "type": "t_mapping(t_uint256,t_struct(World)25_storage)"
     },
     {
       "astId": 44,
@@ -96,8 +86,7 @@
       "label": "world",
       "offset": 0,
       "slot": "7",
-      "type": "t_struct(World)25_storage",
-      "compared": true
+      "type": "t_struct(World)25_storage"
     },
     {
       "astId": 46,
@@ -105,8 +94,7 @@
       "label": "data",
       "offset": 0,
       "slot": "10",
-      "type": "t_bytes_storage",
-      "compared": true
+      "type": "t_bytes_storage"
     },
     {
       "astId": 48,
@@ -114,8 +102,7 @@
       "label": "name",
       "offset": 0,
       "slot": "11",
-      "type": "t_string_storage",
-      "compared": true
+      "type": "t_string_storage"
     }
   ],
   "types": {
@@ -157,8 +144,7 @@
           "label": "a",
           "offset": 0,
           "slot": "0",
-          "type": "t_uint256",
-          "compared": true
+          "type": "t_uint256"
         },
         {
           "astId": 22,
@@ -166,8 +152,7 @@
           "label": "c",
           "offset": 0,
           "slot": "1",
-          "type": "t_uint256",
-          "compared": true
+          "type": "t_uint256"
         },
         {
           "astId": 24,
@@ -175,8 +160,7 @@
           "label": "d",
           "offset": 0,
           "slot": "2",
-          "type": "t_uint256",
-          "compared": true
+          "type": "t_uint256"
         }
       ],
       "numberOfBytes": "96"
