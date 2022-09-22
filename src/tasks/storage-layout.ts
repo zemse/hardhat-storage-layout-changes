@@ -11,9 +11,9 @@ import {
   printResults,
 } from "../utils";
 
-task("storage-layout", "Updates storage layout")
-  .addFlag("check")
-  .addFlag("update")
+task("storage-layout")
+  .addFlag("check", "Checks if storage layout has changed")
+  .addFlag("update", "Updates storage layout artifact")
   .setAction(async (args, hre) => {
     if (!args.check && !args.update) {
       throw new Error("Must use either --check or --update");

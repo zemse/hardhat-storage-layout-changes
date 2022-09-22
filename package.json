@@ -1,9 +1,9 @@
 {
   "name": "hardhat-storage-layout",
-  "version": "0.0.1",
-  "description": "Hardhat TypeScript plugin boilerplate",
-  "repository": "github:nomiclabs/hardhat-ts-plugin-boilerplate",
-  "author": "Nomic Labs LLC",
+  "version": "0.1.0",
+  "description": "Hardhat plugin to check for storage layout changes",
+  "repository": "github:zemse/hardhat-storage-layout",
+  "author": "zemse",
   "license": "MIT",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
@@ -11,7 +11,8 @@
     "ethereum",
     "smart-contracts",
     "hardhat",
-    "hardhat-plugin"
+    "hardhat-plugin",
+    "storage-layout"
   ],
   "scripts": {
     "lint:fix": "prettier --write 'src/**/*.{js,ts}' 'test/**/*.{js,ts}' && tslint --fix --config tslint.json --project tsconfig.json",

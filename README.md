@@ -1,58 +1,80 @@
-# Hardhat TypeScript plugin boilerplate
+# hardhat-storage-layout
 
-This is a sample Hardhat plugin written in TypeScript. Creating a Hardhat plugin
-can be as easy as extracting a part of your config into a different file and
-publishing it to npm.
+_Hardhat plugin to check for storage layout changes_
 
-This sample project contains an example on how to do that, but also comes with
-many more features:
+## What
 
-- A mocha test suite ready to use
-- TravisCI already setup
-- A package.json with scripts and publishing info
-- Examples on how to do different things
+When working with complex and upgradable contracts, it can be difficult to manually see whether some solidity changes broke the storage layout or not. A mistake can cause undefined behavior in deployed contracts. This plugin aims to help notice any storage layout breakings while dev works on solidity changes.
 
 ## Installation
 
-To start working on your project, just run
-
 ```bash
-npm install
+npm install hardhat-storage-layout
 ```
 
-## Plugin development
+Import the plugin in your `hardhat.config.js`:
 
-Make sure to read our [Plugin Development Guide](https://hardhat.org/advanced/building-plugins.html) to learn how to build a plugin.
+```js
+require("hardhat-storage-layout");
+```
 
-## Testing
+Or if you are using TypeScript, in your `hardhat.config.ts`:
 
-Running `npm run test` will run every test located in the `test/` folder. They
-use [mocha](https://mochajs.org) and [chai](https://www.chaijs.com/),
-but you can customize them.
+```ts
+import "hardhat-storage-layout";
+```
 
-We recommend creating unit tests for your own modules, and integration tests for
-the interaction of the plugin with Hardhat and its dependencies.
+## Tasks
 
-## Linting and autoformat
+This plugin adds the _storage-layout_ task to Hardhat:
 
-All of Hardhat projects use [prettier](https://prettier.io/) and
-[tslint](https://palantir.github.io/tslint/).
+```
+Usage: hardhat [GLOBAL OPTIONS] storage-layout [--check] [--update]
 
-You can check if your code style is correct by running `npm run lint`, and fix
-it with `npm run lint:fix`.
+OPTIONS:
 
-## Building the project
+  --check       Checks if storage layout has changed
+  --update      Updates storage layout artifact
+```
 
-Just run `npm run build` ️👷
+## Configuration
 
-## README file
+This plugin extends the `HardhatUserConfig`'s `ProjectPathsUserConfig` object with an optional
+`storageLayouts` field and also adds a `storageLayoutConfig`.
 
-This README describes this boilerplate project, but won't be very useful to your
-plugin users.
+This is an example of how to set it:
 
-Take a look at `README-TEMPLATE.md` for an example of what a Hardhat plugin's
-README should look like.
+```js
+module.exports = {
+  paths: {
+    storageLayouts: ".storage-layouts",
+  },
+  storageLayoutConfig: {
+    contracts: ["Pool"],
+    fullPath: false
+  };
+};
+```
 
-## Migrating from Buidler?
+## Usage
 
-Take a look at [the migration guide](MIGRATION.md)!
+### `npx hardhat storage-layout --check`
+
+```
+Contract: Pool
+   "accounts": at same location
+         "user": at same location
+         "balance": at same location
+   "owner": changed slot from 1 to 2
+   "lastUpdate": found new storage entry at slot 1 offset 0
+   "owner": found new storage entry at slot 2 offset 0
+
+Error: Storage Layout Changed. If this was intentional, please update the storage layout files using "npx hardhat storage-layout --update".
+```
+
+### `npx hardhat storage-layout --update`
+
+```
+Contract: Pool
+updating Pool.json
+```
