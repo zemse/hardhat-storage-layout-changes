@@ -14,6 +14,7 @@ import {
 task("storage-layout")
   .addFlag("check", "Checks if storage layout has changed")
   .addFlag("update", "Updates storage layout artifact")
+  .addFlag("nocompile", "Does not compile before running")
   .setAction(async (args, hre) => {
     if (!args.check && !args.update) {
       throw new Error("Must use either --check or --update");
@@ -21,6 +22,11 @@ task("storage-layout")
 
     if (args.check && args.update) {
       throw new Error("Cannot use both --check and --update");
+    }
+
+    if (!args.nocompile) {
+      // make sure contracts are compiled
+      await hre.run("compile");
     }
 
     const contracts = await getStorageLayoutCheckContracts(hre);
