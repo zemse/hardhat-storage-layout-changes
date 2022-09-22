@@ -91,6 +91,7 @@ export function compareStorageEntries(
       depth,
     ]);
   }
+  actualEntries.forEach((actual) => delete (actual as any).compared);
   return returnCode;
 }
 
