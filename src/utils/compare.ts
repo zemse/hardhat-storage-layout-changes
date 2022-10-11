@@ -14,6 +14,8 @@ export function compareStorageEntries(
   depth: number
 ): 0 | 1 {
   let returnCode: 0 | 1 = 0;
+  // TODO compare storage entries in a ordered way instead of comparing by label.
+  // Also entry.contract is present, which contains the contract path and name
   for (const expected of expectedEntries) {
     const actualEntriesFilter = actualEntries.filter(
       (actual) => expected.label === actual.label
@@ -26,10 +28,12 @@ export function compareStorageEntries(
       ]);
       returnCode = 1;
     } else if (actualEntriesFilter.length > 1) {
-      // if multiple private variables in the contract have same name, try using astId
+      // if multiple private variables in the contract have same name, try finding one with same label, slot, offset.
       const actual = actualEntries.find(
         (actual) =>
-          expected.astId === actual.astId && expected.label === actual.label
+          expected.label === actual.label &&
+          expected.slot === actual.slot &&
+          expected.offset === actual.offset
       );
       if (!actual) {
         results.push([
@@ -39,6 +43,15 @@ export function compareStorageEntries(
         ]);
         returnCode = 1;
       } else {
+        compareTypes(
+          expected.label,
+          expected.type,
+          actual.type,
+          expectedTypes,
+          actualTypes,
+          results,
+          depth + 1
+        );
         actual.compared = true;
       }
     } else {
