@@ -38,8 +38,9 @@ export function compareStorageEntries(
           depth,
         ]);
         returnCode = 1;
+      } else {
+        actual.compared = true;
       }
-      (actual as any).compared = true;
     } else {
       // actualEntriesFilter.length === 1
       const actual = actualEntriesFilter[0];
@@ -77,13 +78,13 @@ export function compareStorageEntries(
           results,
           depth + 1
         );
-        (actual as any).compared = true;
+        actual.compared = true;
       }
     }
   }
 
   const uncomparedActualEntries = actualEntries.filter(
-    (actual) => !(actual as any).compared
+    (actual) => !actual.compared
   );
   for (const actual of uncomparedActualEntries) {
     results.push([
@@ -92,7 +93,7 @@ export function compareStorageEntries(
       depth,
     ]);
   }
-  actualEntries.forEach((actual) => delete (actual as any).compared);
+  actualEntries.forEach((actual) => delete actual.compared);
   return returnCode;
 }
 

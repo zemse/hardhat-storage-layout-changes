@@ -5,6 +5,7 @@ export interface StorageEntry {
   offset: number;
   slot: string;
   type: string;
+  compared?: boolean;
 }
 
 // export interface StorageType {
