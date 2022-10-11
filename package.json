@@ -1,6 +1,6 @@
 {
   "name": "hardhat-storage-layout-changes",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Hardhat plugin to check for storage layout changes",
   "repository": "github:zemse/hardhat-storage-layout-changes",
   "author": "zemse",
